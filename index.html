@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>State of Global AI & Digital Adoption 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 250px;
+                max-height: 300px;
+            }
+        }
+        [data-tab-content] {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        [data-tab-content].active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .challenge-card {
+            transition: all 0.3s ease;
+        }
+        .challenge-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body class="bg-[#fcfbf9] text-[#2d3748] font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Chosen Palette: Warm Minimalist (Background: Off-white #fcfbf9, Surface: White #ffffff, Text: Slate #2d3748, Accents: Terracotta #d97757 & Steel Blue #5b7c99). Selected for a professional, calm, and highly legible analytical experience. -->
+    
+    <!-- Application Structure Plan: The SPA is structured as a dynamic, tab-driven dashboard. Instead of a linear report, it groups information into three functional areas: Executive Overview (high-level metrics and trends), Industry Deep-Dive (comparative analysis with drill-down capabilities), and Strategic Challenges (interactive cards for qualitative insights). This non-linear approach allows users to immediately access the data most relevant to their needs, improving cognitive flow and exploratory freedom compared to a static PDF. -->
+    
+    <!-- Visualization & Content Choices: Overview -> Goal: Inform -> Method: KPIs + Line Chart -> Justification: Shows macro growth clearly over time. Industry -> Goal: Compare & Drill-down -> Method: Horizontal Bar Chart with onClick JS event -> Justification: Allows easy cross-sector comparison while keeping the interface uncluttered by hiding detailed qualitative text until user interaction. Challenges -> Goal: Organize & Explain -> Method: Interactive CSS grid cards -> Justification: Breaks down dense qualitative recommendations into digestible, visually appealing chunks without relying on external assets. Chart.js is used for all rendering, strictly adhering to Canvas and NO SVG/Mermaid constraints. -->
+    
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-3">
+                    <span class="text-3xl text-[#5b7c99]">&#128200;</span>
+                    <h1 class="text-xl md:text-2xl font-bold tracking-tight text-[#2d3748]">Global AI Adoption 2026</h1>
+                </div>
+            </div>
+            <nav class="flex space-x-8 overflow-x-auto" aria-label="Tabs">
+                <button data-tab="overview" class="border-[#d97757] text-[#d97757] whitespace-nowrap py-4 px-1 border-b-2 font-semibold text-sm transition-colors">Executive Overview</button>
+                <button data-tab="industry" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-semibold text-sm transition-colors">Industry Deep-Dive</button>
+                <button data-tab="challenges" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-semibold text-sm transition-colors">Strategic Challenges</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        
+        <div id="overview" data-tab-content class="active">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold mb-4 text-[#2d3748]">Executive Overview</h2>
+                <p class="text-lg text-gray-600 leading-relaxed">
+                    Welcome to the interactive summary of the 2026 Global Digital Transformation & AI Adoption Report. This section provides high-level key performance indicators and tracks the macro trajectory of global investments. The data reveals a decisive shift from experimental AI projects to core enterprise integration over the past four years, highlighting the sheer scale of capital deployment.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm flex flex-col justify-center items-center text-center">
+                    <span class="text-4xl mb-2">&#128181;</span>
+                    <h3 class="text-gray-500 font-medium text-sm uppercase tracking-wider mb-1">Total Global Investment</h3>
+                    <p class="text-4xl font-extrabold text-[#2d3748]">$1.4 Trillion</p>
+                    <p class="text-sm text-green-600 mt-2 font-medium">+27% YoY</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm flex flex-col justify-center items-center text-center">
+                    <span class="text-4xl mb-2">&#127760;</span>
+                    <h3 class="text-gray-500 font-medium text-sm uppercase tracking-wider mb-1">Average Enterprise Adoption</h3>
+                    <p class="text-4xl font-extrabold text-[#5b7c99]">68%</p>
+                    <p class="text-sm text-gray-500 mt-2 font-medium">Core operations integration</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm flex flex-col justify-center items-center text-center">
+                    <span class="text-4xl mb-2">&#9201;</span>
+                    <h3 class="text-gray-500 font-medium text-sm uppercase tracking-wider mb-1">Time-to-Value (Average)</h3>
+                    <p class="text-4xl font-extrabold text-[#d97757]">8.5 Months</p>
+                    <p class="text-sm text-green-600 mt-2 font-medium">-15% since 2024</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 md:p-8 rounded-xl border border-gray-100 shadow-sm">
+                <h3 class="text-xl font-bold mb-6 text-[#2d3748]">Global AI Investment Trajectory (2022 - 2026)</h3>
+                <div class="chart-container">
+                    <canvas id="overviewChart"></canvas>
+                </div>
+                <p class="text-sm text-center text-gray-500 mt-4">Chart illustrates the exponential growth in capital expenditure specifically allocated to artificial intelligence infrastructure and deployment software.</p>
+            </div>
+        </div>
+
+        <div id="industry" data-tab-content>
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold mb-4 text-[#2d3748]">Industry Deep-Dive</h2>
+                <p class="text-lg text-gray-600 leading-relaxed">
+                    Explore how different sectors are integrating AI technologies. This interactive view allows you to compare adoption maturity across five major industries. <strong>Click on any bar in the chart below</strong> to uncover specific qualitative insights, primary use cases, and adoption drivers for that particular sector, effectively drilling down from quantitative metrics to qualitative context.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                <div class="lg:col-span-3 bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+                    <h3 class="text-lg font-bold mb-2">Adoption Maturity by Sector</h3>
+                    <p class="text-sm text-gray-500 mb-6">Percentage of enterprises reporting scaled AI deployments. Click bars for details.</p>
+                    <div class="chart-container">
+                        <canvas id="industryChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-2 bg-[#5b7c99] text-white p-8 rounded-xl shadow-md flex flex-col justify-center">
+                    <div id="ind-detail-empty" class="text-center opacity-80">
+                        <span class="text-6xl mb-4 block">&#128070;</span>
+                        <h4 class="text-xl font-semibold">Select an Industry</h4>
+                        <p class="mt-2 text-sm">Click on a bar in the chart to view sector-specific strategic insights and primary use cases.</p>
+                    </div>
+                    
+                    <div id="ind-detail-content" class="hidden h-full flex flex-col justify-center">
+                        <div class="inline-block bg-white/20 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 w-max" id="ind-detail-tag">Sector Insight</div>
+                        <h4 id="ind-detail-title" class="text-2xl font-bold mb-4">Title</h4>
+                        <p id="ind-detail-text" class="text-white/90 leading-relaxed text-lg mb-6">Insight text goes here.</p>
+                        
+                        <div class="mt-auto border-t border-white/20 pt-4">
+                            <h5 class="text-xs uppercase font-bold text-white/70 tracking-widest mb-2">Primary Use Cases</h5>
+                            <ul id="ind-detail-cases" class="list-disc list-inside text-sm text-white/90 space-y-1">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="challenges" data-tab-content>
+            <div class="mb-10">
+                <h2 class="text-3xl font-bold mb-4 text-[#2d3748]">Strategic Challenges & Mitigations</h2>
+                <p class="text-lg text-gray-600 leading-relaxed">
+                    Identify the primary roadblocks hindering digital transformation. This section organizes qualitative findings from global CIOs and transformation leaders. Hover over each challenge card to explore the core issue and read the recommended strategic mitigation strategies identified in the 2026 report.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <div class="challenge-card bg-white p-8 rounded-xl border border-gray-200 shadow-sm relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-[#d97757]"></div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center text-2xl">&#129504;</div>
+                        <h3 class="text-xl font-bold text-[#2d3748]">Specialized Talent Scarcity</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">The demand for AI architects, ML engineers, and data ethicists outpaces global supply by a factor of 3:1, causing significant project delays.</p>
+                    <div class="bg-gray-50 p-4 rounded-lg mt-4 border border-gray-100">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Recommended Mitigation</h4>
+                        <p class="text-sm text-[#2d3748]">Shift from external hiring to aggressive internal upskilling. Implement 'AI literacy' programs across non-technical departments to democratize development via low-code platforms.</p>
+                    </div>
+                </div>
+
+                <div class="challenge-card bg-white p-8 rounded-xl border border-gray-200 shadow-sm relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-[#5b7c99]"></div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-2xl">&#128274;</div>
+                        <h3 class="text-xl font-bold text-[#2d3748]">Data Privacy & Governance</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Stricter global regulations (like the global AI Act derivatives) and the risk of proprietary data leakage into LLMs paralyze deployment decisions.</p>
+                    <div class="bg-gray-50 p-4 rounded-lg mt-4 border border-gray-100">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Recommended Mitigation</h4>
+                        <p class="text-sm text-[#2d3748]">Deploy localized, open-source models within secure enterprise perimeters (Private AI). Establish an AI Governance Board prior to scaling any generative application.</p>
+                    </div>
+                </div>
+
+                <div class="challenge-card bg-white p-8 rounded-xl border border-gray-200 shadow-sm relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-gray-700"></div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-2xl">&#128187;</div>
+                        <h3 class="text-xl font-bold text-[#2d3748]">Legacy System Integration</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Technical debt and fragmented legacy architectures prevent seamless data flow, severely limiting the efficacy of modern predictive algorithms.</p>
+                    <div class="bg-gray-50 p-4 rounded-lg mt-4 border border-gray-100">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Recommended Mitigation</h4>
+                        <p class="text-sm text-[#2d3748]">Adopt a strangler fig pattern for modernization. Utilize AI-driven code refactoring tools to accelerate legacy decoupling before attempting core integrations.</p>
+                    </div>
+                </div>
+
+                <div class="challenge-card bg-white p-8 rounded-xl border border-gray-200 shadow-sm relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-green-600"></div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center text-2xl">&#128202;</div>
+                        <h3 class="text-xl font-bold text-[#2d3748]">Proving ROI at Scale</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">While pilot projects show promise, translating isolated successes into measurable, enterprise-wide financial returns remains structurally difficult.</p>
+                    <div class="bg-gray-50 p-4 rounded-lg mt-4 border border-gray-100">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Recommended Mitigation</h4>
+                        <p class="text-sm text-[#2d3748]">Abandon vanity metrics. Tie AI initiatives directly to core business KPIs (e.g., customer acquisition cost, production yield) from day zero of the pilot phase.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-white border-t border-gray-200 py-8 mt-auto">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500">
+            <p>Source: Fictional Global Digital Transformation & AI Adoption Report 2026. Designed for interactive data synthesis.</p>
+        </div>
+    </footer>
+
+    <script>
+        const tabs = document.querySelectorAll('[data-tab]');
+        const contents = document.querySelectorAll('[data-tab-content]');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => {
+                    t.classList.remove('border-[#d97757]', 'text-[#d97757]');
+                    t.classList.add('border-transparent', 'text-gray-500');
+                });
+                tab.classList.remove('border-transparent', 'text-gray-500');
+                tab.classList.add('border-[#d97757]', 'text-[#d97757]');
+
+                contents.forEach(c => c.classList.remove('active'));
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+
+        const ctxOverview = document.getElementById('overviewChart').getContext('2d');
+        new Chart(ctxOverview, {
+            type: 'line',
+            data: {
+                labels: ["2022", "2023", "2024", "2025", "2026"],
+                datasets: [{
+                    label: 'Global Investment (Billions USD)',
+                    data: [520, 680, 910, 1150, 1400],
+                    borderColor: '#5b7c99',
+                    backgroundColor: 'rgba(91, 124, 153, 0.15)',
+                    borderWidth: 3,
+                    pointBackgroundColor: '#d97757',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    pointRadius: 5,
+                    pointHoverRadius: 7,
+                    tension: 0.3,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'top', labels: { font: { family: "'Segoe UI', sans-serif" } } },
+                    tooltip: {
+                        backgroundColor: '#2d3748',
+                        padding: 12,
+                        titleFont: { size: 14 },
+                        bodyFont: { size: 13 },
+                        callbacks: {
+                            label: function(context) {
+                                return '$' + context.parsed.y + ' Billion';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { borderDash: [4, 4], color: '#f0f0f0' },
+                        ticks: { callback: function(value) { return '$' + value + 'B'; } }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+
+        const indDetails = [
+            {
+                title: "Technology & Telecom",
+                text: "The technology sector leads globally, with ubiquitous AI integration shifting from experimental product features to core internal operations and developer augmentation.",
+                cases: ["AI-Assisted Software Engineering", "Automated Network Optimization", "Generative Customer Support"]
+            },
+            {
+                title: "Financial Services",
+                text: "Finance relies heavily on predictive algorithms for risk management. The current focus is scaling generative AI for wealth management while navigating strict regulatory frameworks.",
+                cases: ["Algorithmic Trading & Hedging", "Real-time Fraud Detection", "Automated Compliance Reporting"]
+            },
+            {
+                title: "Healthcare & Life Sciences",
+                text: "Healthcare adoption is accelerating rapidly, moving beyond operational efficiency into clinical decision support and accelerating drug discovery pipelines.",
+                cases: ["Medical Imaging Analysis", "Predictive Patient Flow", "Molecular Structure Generation"]
+            },
+            {
+                title: "Manufacturing & Logistics",
+                text: "Heavy industries prioritize industrial AI, focusing on the convergence of IoT data and machine learning to achieve near-zero unplanned downtime.",
+                cases: ["Predictive Machinery Maintenance", "Dynamic Supply Chain Routing", "Computer Vision Quality Control"]
+            },
+            {
+                title: "Retail & Consumer",
+                text: "Retailers utilize AI primarily for top-line revenue growth through hyper-personalization, while increasingly applying it to margin-saving inventory forecasting.",
+                cases: ["Dynamic Pricing Engines", "Hyper-personalized Marketing", "Demand Forecasting & Inventory"]
+            }
+        ];
+
+        const ctxInd = document.getElementById('industryChart').getContext('2d');
+        new Chart(ctxInd, {
+            type: 'bar',
+            data: {
+                labels: ["Technology", "Finance", "Healthcare", "Manufacturing", "Retail"],
+                datasets: [{
+                    label: 'Scaled Adoption Rate (%)',
+                    data: [88, 76, 68, 58, 52],
+                    backgroundColor: ['#d97757', '#e2957b', '#e9b09d', '#f0cabb', '#f6e2da'],
+                    borderRadius: 6,
+                    borderWidth: 0,
+                    hoverBackgroundColor: '#5b7c99'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: '#2d3748',
+                        padding: 10,
+                        callbacks: {
+                            label: function(context) { return context.parsed.x + '% Maturity'; }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        max: 100,
+                        grid: { borderDash: [4, 4], color: '#f0f0f0' },
+                        ticks: { stepSize: 20 }
+                    },
+                    y: {
+                        grid: { display: false }
+                    }
+                },
+                onHover: (event, chartElement) => {
+                    event.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
+                },
+                onClick: (e, activeEls) => {
+                    if (activeEls.length > 0) {
+                        const idx = activeEls[0].index;
+                        const data = indDetails[idx];
+                        
+                        document.getElementById('ind-detail-empty').classList.add('hidden');
+                        document.getElementById('ind-detail-content').classList.remove('hidden');
+                        
+                        document.getElementById('ind-detail-title').innerText = data.title;
+                        document.getElementById('ind-detail-text').innerText = data.text;
+                        
+                        const list = document.getElementById('ind-detail-cases');
+                        list.innerHTML = '';
+                        data.cases.forEach(c => {
+                            const li = document.createElement('li');
+                            li.innerText = c;
+                            list.appendChild(li);
+                        });
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+```
